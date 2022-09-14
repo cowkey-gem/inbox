@@ -13,7 +13,16 @@
 <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
 <script type="text/babel">
     const LikeButton = () => {
-        return 'いいね';
+        // stateを使用した状態管理
+        const [liked, setLiked] = React.useState(false);
+        // 状態を変える関数。管理されたsetLikedを通して状態を変えるのだと思われる。
+        const toggleLiked = () => setLiked(!liked);
+
+        return (
+            <button className="likeButton" onClick={toggleLiked}>
+                {liked ? 'いいね済' : 'いいね前'}
+            </button>
+        );
     };
 
     ReactDOM.render(<LikeButton />, document.querySelector('#root'));
