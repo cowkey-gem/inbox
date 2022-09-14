@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NameInput</title>
+</head>
+<body>
+    <div id="root"></div>
+<script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
+<script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+<script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+<script type="text/babel">
+    const NameInput = () => {
+        // stateを使用した状態管理
+        const [name, setName] = React.useState('ナナシの権兵衛');
+        // 状態を変える関数。管理されたsetLikedを通して状態を変えるのだと思われる。
+        const handleOnChange = (event) => setName(event.target.value);
+
+        return (
+            <div>
+                <input type="text" onChange={handleOnChange}/>
+                <p>こんにちは、{name}さん</p>
+            </div>
+        );
+    };
+
+    ReactDOM.render(<NameInput />, document.querySelector('#root'));
+</script>
+</body>
+</html>
