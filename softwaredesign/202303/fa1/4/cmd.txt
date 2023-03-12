@@ -7,4 +7,16 @@ kubectl exec -it deploy/curl -- curl 10.244.0.9/get
 kubectl delete po httpbin-568c5d66f-fjhqw
 kubectl exec -it deploy/curl -- curl 10.244.0.9/get
 kubectl exec -it deploy/curl -- curl 10.244.0.9/get # unreachable!
-#kubectl exec -it deploy/curl -- curl 10.244.0.9/get # unreachable
+# Serviceの作成
+kubectl expose deploy httpbin --port 80 --dry-run=client -oyaml
+kubectl expose deploy httpbin --port 80
+kubectl exec -it deploy/curl -- curl 10.96.123.199/get
+kubectl create deploy multitool --image=wbitt/network-multitool
+kubectl exec -it deploy/multitool -- cat /etc/resolv.conf
+kubectl -n kube-system get svc kube-dns
+kubectl exec -it deploy/multitool -- dig httpbin +search
+kubectl scale deploy httpbin --replicas=2
+kubectl get po -owide -l app=httpbin
+kubectl get endpoints httpbin
+kubectl get po -owide -l app=httpbin #-lはラベル
+kubectl label po curl-96b9784bb-hbzdv app=httpbin --overwrite #ラベルを上書き
