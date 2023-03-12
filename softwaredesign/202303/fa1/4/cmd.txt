@@ -1,0 +1,10 @@
+kind create cluster --config kind.config.yaml
+kubectl create deploy httpbin --image=kennethreitz/httpbin:latest
+kubectl get po -owide
+kubectl create deploy curl --image=nginx:1.23.3
+kubectl get po -owide
+kubectl exec -it deploy/curl -- curl 10.244.0.9/get
+kubectl delete po httpbin-568c5d66f-fjhqw
+kubectl exec -it deploy/curl -- curl 10.244.0.9/get
+kubectl exec -it deploy/curl -- curl 10.244.0.9/get # unreachable!
+#kubectl exec -it deploy/curl -- curl 10.244.0.9/get # unreachable
