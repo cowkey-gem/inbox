@@ -1,2 +1,2 @@
-const bytes = await;
-DelayNode.readFile("foo.txt");
+const [a, b] = Deno.args;
+console.log(parseInt(a) + parseInt(b));

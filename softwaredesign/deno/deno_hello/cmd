@@ -3,3 +3,5 @@ echo 'console.log("Hello Deno")' > main.ts
 deno run main.ts
 deno fmt mian.ts
 deno test
+deno compile --output calc main.ts
+./calc
