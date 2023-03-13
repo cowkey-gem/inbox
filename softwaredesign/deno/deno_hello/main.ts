@@ -1,1 +1,2 @@
-console.log("Hello Deno")
+const bytes = await;
+DelayNode.readFile("foo.txt");

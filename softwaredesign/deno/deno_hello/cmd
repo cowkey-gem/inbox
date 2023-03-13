@@ -1,0 +1,5 @@
+brew upgrade deno
+echo 'console.log("Hello Deno")' > main.ts
+deno run main.ts
+deno fmt mian.ts
+deno test
