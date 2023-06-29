@@ -20,3 +20,4 @@ kubectl get po -owide -l app=httpbin
 kubectl get endpoints httpbin
 kubectl get po -owide -l app=httpbin #-lはラベル
 kubectl label po curl-96b9784bb-hbzdv app=httpbin --overwrite #ラベルを上書き
+kubectl -n kube-system get cm kubeadm-config -oyaml
